@@ -1,0 +1,50 @@
+New Erin Project:
+Hypothalamus
+Connectivity from Hypothalamus different in human males/females
+
+DASH: pick a region and look at stats
+
+
+
+
+
+FSL maths
+Get fa and md between sexes
+Nipype cache instead of workflow
+niwidgets vs. vtk
+
+probtrackx results, threshold by 0.01 by way total (single line text file)
+
+
+
+/HCP_Data/NipypeScratch/runpbx2/subjectid/
+/HCP_data/scriopts/workflows/threshold and view pbx3 results
+
+fslmaths fdt_paths.nii.gz -thr {0.0001*waytotal}
+
+### 
+unrestricted_gutman is metadata file
+
+Metadatile to pandas
+Dash plot of metadata
+
+
+#-----------------------------------
+docker run -it --rm \
+-v /data/FOX_FullResData:/data/FOX_FullResData:rw \
+-v /data/Gliomics:/data/Gliomics:rw \
+-v /code/notebooks:/code/notebooks:rw \
+-v /code/scripts:/code/scripts:rw \
+-v /HCP_Data/Scripts:/code/dgutman:rw \
+-v /HCP_Data/HCP_BedpostData:/data/HCP_BedpostData:rw \
+-v /HCP_Data/NipypeScratch/runpbx2:/data/NipypeScratch/runpbx2:rw \
+-v /nvme:/data/nvme:rw \
+-v /SASRAID:/data/SASRAID:rw \
+-p 8123:8888 \
+fgiuste/neuro:V4
+
+
+# Generate fa sript:
+/HCP_Data/NipypeScratch/gen_fa/_subject_id_991267/dtifit/command.txt
+
+dtifit -k /data/HCP_Data/HCP_BedpostData/991267/T1w/Diffusion/data.nii.gz -o 991267 -m /data/HCP_Data/HCP_BedpostData/991267/T1w/Diffusion/nodif_brain_mask.nii.gz -r /data/HCP_Data/HCP_BedpostData/991267/T1w/Diffusion/bvecs -b /data/HCP_Data/HCP_BedpostData/991267/T1w/Diffusion/bvals
